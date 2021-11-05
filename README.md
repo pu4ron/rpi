@@ -8,7 +8,7 @@ cd rpi
 
 sudo chmod 777 install
 
-sudo chmod +x install 
+sudo chmod +x  install 
 
 # Comando ao CRON
 
