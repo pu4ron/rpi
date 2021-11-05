@@ -1,6 +1,6 @@
-# Script-Rpi
+# RPI
 
-# Install Script
+# Install
 
 rpi-rw
 git clone https://github.com/pu4ron/rpi.git
@@ -9,7 +9,7 @@ cd rpi
 sudo chmod 777 install 
 sudo chmod +x install 
 
-# Adicionar linha de comandoao CRON
+# Comando ao CRON
 
 rpi-rw
 
