@@ -1,0 +1,7 @@
+rpi-rw
+
+crontab -e
+
+*/1 * * * *  sudo /usr/local/bin/status start
+
+sudo /etc/init.d/cron restart

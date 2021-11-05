@@ -1,0 +1,61 @@
+#!/bin/bash
+#
+################################################
+#                                              #
+#        Por: Ronualdo JSA - PU4RON            #
+#                                              #
+#           Janauba/MG (Brasil)                #
+#                                              #
+################################################ 
+#
+clear
+echo -e "\033[01;37m****************************************\033[00;37m"
+echo -e "\033[01;37m*                                      *\033[00;37m"
+echo -e "\033[01;37m*          \033[01;33mRONUALDO - PU4RON\033[00;37m           *"
+echo -e "\033[01;37m*                                      *\033[00;37m"
+echo -e "\033[01;37m****************************************\033[00;37m"
+echo ""
+echo ""
+echo -e "\033[01;37m* SCRIPT WATCHDOG - STATUS INTERNET (PI-STAR) *\033[00;37m"
+echo ""
+read -p "* Continuar? (S/N): " -n 1 -r
+case "$REPLY" in 
+
+  s|S ) echo "" ;;
+  n|N ) exit 0 ;;
+    * ) exit 0 ;;   
+esac
+echo ""
+
+mount -o remount,rw /
+
+DIRL_DEST="/usr/local/bin"
+DIRL_DEST_ARQ="/usr/local/bin/status"
+
+DIR_ORIG="/home/pi-star/pu4ron"
+DIR_ORIG_ARQ="/home/pi-star/pu4ron/status"
+
+echo "* Verificando arquivo..."
+echo ""
+sleep 2
+
+if [ -f "$DIRL_DEST_ARQ" ]; then                                          
+   sudo rm ${DIRL_DEST_ARQ}
+ fi
+
+echo "* Estruturando..."
+echo ""
+sleep 2
+
+sudo cp -p ${DIR_ORIG_ARQ} ${DIRL_DEST}
+
+sudo chmod 777 ${DIRL_DEST_ARQ}
+sudo chmod +x  ${DIRL_DEST_ARQ}
+
+
+echo ""
+echo -e "\033[01;37m*\033[04;32mFIM\033[00;37m*"
+echo ""
+
+# cd /home/pi-star
+# sudo rm -R /home/pi-star/pu4ron

@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+################################################
+#                                              #
+#        Por: Ronualdo JSA - PU4RON            #
+#                                              #
+#                Janauba/MG                    #
+#                                              #
+################################################
+#
+#
+
+valor=0
+
+DATE=`date +%H:%M:%S_%d/%m/%Y`
+
+DIR="/var/log/pi-star/status_internet.log"
+
+echo "* Verificando status internet..."
+
+sleep 2
+
+if [ -f "$DIR" ]; then
+
+   echo "* Arquivo log verificado."
+
+else
+
+   mount -o remount,rw /
+   sleep 2
+
+   sudo touch ${DIR}
+   sudo chmod 777 ${DIR}
+
+   sleep 2
+   mount -o remount,ro /
+
+fi 
+
+while [ $valor -lt 2 ]; do
+
+        if /bin/ping -c 5 8.8.8.8 >/dev/null
+        then
+                echo "*** STATUS INTERNET: ON ***" 
+                # echo "* Internet ON "$DATE  >>/var/log/pi-star/monitor_mmdvm.log  
+                exit 0
+        fi
+
+
+        valor=$((valor+1))
+        sleep 2
+        echo "* Internet OFF "$DATE.  >>$DIR
+done
+
+sudo /bin/sync
+sudo /bin/sync
+sudo /bin/sync
+
+echo  "* Restart network "$DATE  >>$DIR
+sudo /etc/init.d/networking restart
+
+sudo ifconfig eth0 down
+sleep 2
+sudo ifconfig eth0 up
