@@ -10,6 +10,8 @@ sudo chmod 777 install
 
 sudo chmod +x  install 
 
+sudo ./install
+
 # Comando ao CRON
 
 rpi-rw
