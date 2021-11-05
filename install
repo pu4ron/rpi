@@ -32,8 +32,8 @@ mount -o remount,rw /
 DIRL_DEST="/usr/local/bin"
 DIRL_DEST_ARQ="/usr/local/bin/status"
 
-DIR_ORIG="/home/pi-star/pu4ron"
-DIR_ORIG_ARQ="/home/pi-star/pu4ron/status"
+DIR_ORIG="/home/pi-star/rpi"
+DIR_ORIG_ARQ="/home/pi-star/rpi/status"
 
 echo "* Verificando arquivo..."
 echo ""
@@ -57,5 +57,5 @@ echo ""
 echo -e "\033[01;37m*\033[04;32mFIM\033[00;37m*"
 echo ""
 
-# cd /home/pi-star
-# sudo rm -R /home/pi-star/pu4ron
+cd /home/pi-star
+sudo rm -R /home/pi-star/rpi
